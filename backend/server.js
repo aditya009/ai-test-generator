@@ -15,8 +15,8 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  credentials: true
+  origin: '*',
+  credentials: false
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -37,16 +37,16 @@ app.use('/api/cucumber', cucumberRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'ok', 
+  res.json({
+    status: 'ok',
     timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV 
+    environment: process.env.NODE_ENV
   });
 });
 
 // Root endpoint
 app.get('/', (req, res) => {
-  res.json({ 
+  res.json({
     message: 'AI Test Case Generator API',
     version: '1.0.0',
     endpoints: {
