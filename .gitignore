@@ -1,8 +1,8 @@
 node_modules/
-.next/
+.env
+.env.local
 dist/
 build/
-coverage/
-.env
 .DS_Store
-*.app/
+*.log
+package-lock.json
